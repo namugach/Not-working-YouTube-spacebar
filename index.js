@@ -33,13 +33,8 @@ const obj = {
     const video = await this.getAsyncValue(() => {
       return document.querySelector('video.html5-main-video');
     });
-    const controls = document.querySelector("ytp-chrome-controls");
+    const controls = document.querySelector(".ytp-chrome-controls");
 
-
-
-    window.addEventListener("keydown", e => {
-      if (e.key === 'Alt') this.isAltKey = true;
-    });
 
     window.addEventListener("blur", () => {
       this.isBlur = true;
@@ -65,6 +60,7 @@ const obj = {
     });
 
     window.addEventListener("keydown", e => {
+      if (e.key === 'Alt') this.isAltKey = true;
       if (this.activeVideo) return;
       if (e.code === "Space") {
         this.isAltKey = false;
