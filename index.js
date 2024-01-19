@@ -34,16 +34,16 @@ const obj = {
       return document.querySelector('video.html5-main-video');
     });
     const controls = document.querySelector("ytp-chrome-controls");
-    
-    
+
+
 
     window.addEventListener("keydown", e => {
-      if(e.key === 'Alt') this.isAltKey = true;
+      if (e.key === 'Alt') this.isAltKey = true;
     });
 
     window.addEventListener("blur", () => {
       this.isBlur = true;
-      if(this.isAltKey) {
+      if (this.isAltKey) {
         this.activeVideo = false;
       }
     });
@@ -59,13 +59,13 @@ const obj = {
       this.isBlur = false;
       this.isAltKey = false;
       this.activeVideo = !(
-        e.target.className === "ytp-play-button ytp-button" || 
+        e.target.className === "ytp-play-button ytp-button" ||
         e.target.className === "ytp-mute-button ytp-button"
       )
     });
 
-    window.addEventListener("keydown" , e => {
-      if(this.activeVideo) return;
+    window.addEventListener("keydown", e => {
+      if (this.activeVideo) return;
       if (e.code === "Space") {
         this.isAltKey = false;
         this.isBlur = false;
