@@ -25,7 +25,17 @@ const obj = {
       }, time);
     });
   },
-
+  /**
+   * @param {HTMLVideoElement} elem 
+   * @param {string} code 
+   */
+  checkVideoPausedAndSetActive(elem, code) {
+    if (elem.paused) {
+      if (code === "ArrowRight" || code === "ArrowLeft") {
+        this.activeVideo = false;
+      }
+    }
+  },
   async setEvent() {
     /**
      * @type {HTMLVideoElement}
@@ -58,9 +68,9 @@ const obj = {
         e.target.className === "ytp-mute-button ytp-button"
       )
     });
-
     window.addEventListener("keydown", e => {
       if (e.key === 'Alt') this.isAltKey = true;
+      this.checkVideoPausedAndSetActive(video, e.code);
       if (this.activeVideo) return;
       if (e.code === "Space") {
         this.isAltKey = false;
